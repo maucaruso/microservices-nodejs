@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  order_app:
+    build: .
+    ports:
+      - 3002:3000
+    volumes:
+      - .:/home/node/app
+  order_db:
+    ports:
+      - 5434:5432
+    image: postgres:15.2-alpine3.17
+    env_file: .env

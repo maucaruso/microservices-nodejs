@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  client_app:
+    build: .
+    ports:
+      - 3001:3000
+    volumes:
+      - .:/home/node/app
+  client_db:
+    ports:
+      - 5433:5432
+    image: postgres:15.2-alpine3.17
+    env_file: .env
