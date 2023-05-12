@@ -4,7 +4,7 @@ services:
   order_app:
     build: .
     ports:
-      - 3002:3000
+      - 3002:3001
     volumes:
       - .:/home/node/app
   order_db:

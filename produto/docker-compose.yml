@@ -4,7 +4,7 @@ services:
   product_app:
     build: .
     ports:
-      - 3003:3000
+      - 3003:3001
     volumes:
       - .:/home/node/app
   product_db:
