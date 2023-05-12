@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  # Client Services
+  client_app:
+    build:
+      context: ./cliente
+    ports:
+      - 3001:3000
+    volumes:
+      - .:/home/node/app/cliente
+    working_dir: /home/node/app/cliente
+  client_db:
+    ports:
+      - 5433:5432
+    image: postgres:15.2-alpine3.17
+    env_file: ./cliente/.env
+    
+  # Order Services
+  order_app:
+    build:
+      context: ./pedidos
+    ports:
+      - 3002:3000
+    volumes:
+      - .:/home/node/app/pedidos
+    working_dir: /home/node/app/pedidos
+  order_db:
+    ports:
+      - 5434:5432
+    image: postgres:15.2-alpine3.17
+    env_file: ./pedidos/.env
+  
+  # Product Services
+  product_app:
+    build:
+      context: ./produto
+    ports:
+      - 3003:3000
+    volumes:
+      - .:/home/node/app/produto
+    working_dir: /home/node/app/produto
+  product_db:
+    ports:
+      - 5435:5432
+    image: postgres:15.2-alpine3.17
+    env_file: ./produto/.env
