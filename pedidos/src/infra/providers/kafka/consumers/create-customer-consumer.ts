@@ -6,8 +6,7 @@ type CustomerConsumer = {
   id: string
 }
 
-export async function createCustomerConsumer() {
-  console.log("createCustomerConsumer");
+export async function createCustomerConsumer() {  
   
   const consumer = await kafkaConsumer("CUSTOMER_CREATED");
   await consumer.run({
