@@ -1,0 +1,1 @@
+Kafka queue was created on https://console.upstash.com
