@@ -21,10 +21,8 @@ model Customer {
 
 model Product {
   id String @id @default(uuid())
-  name String
+  externalId String
   code String @unique
-  quantity Int
-  price Float
   
   @@map("products")
 }
