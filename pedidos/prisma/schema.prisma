@@ -15,6 +15,7 @@ model Customer {
   id String @id @default(uuid())
   externalId String
   email String @unique
+  Order Order[]
   
   @@map("customers")
 }
@@ -23,6 +24,29 @@ model Product {
   id String @id @default(uuid())
   externalId String
   code String @unique
+  OrderItems OrderItems[]
   
   @@map("products")
+}
+
+model Order {
+  id String @id @default(uuid())
+  customer Customer @relation(fields: [customerId], references: [id])
+  createdAt DateTime @default(now())
+  customerId String
+  OrderItems OrderItems[]
+  status String
+  
+  @@map("orders")
+}
+
+model OrderItems {
+  id String @id @default(uuid())
+  product Product @relation(fields: [productId], references: [id])
+  order Order @relation(fields: [orderId], references: [id])
+  quantity Float
+  orderId String
+  productId String
+  
+  @@map("order_items")
 }
